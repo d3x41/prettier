@@ -30,14 +30,15 @@
     "bin"
   ],
   "dependencies": {
-    "@angular/compiler": "19.2.5",
+    "@angular/compiler": "19.2.7",
     "@babel/code-frame": "7.26.2",
     "@babel/parser": "7.27.0",
     "@babel/types": "7.27.0",
     "@glimmer/syntax": "0.94.9",
+    "@prettier/cli": "0.7.1",
     "@prettier/parse-srcset": "3.1.0",
-    "@typescript-eslint/typescript-estree": "8.29.0",
-    "@typescript-eslint/visitor-keys": "8.29.0",
+    "@typescript-eslint/typescript-estree": "8.30.1",
+    "@typescript-eslint/visitor-keys": "8.30.1",
     "acorn": "8.14.1",
     "acorn-jsx": "5.3.2",
     "angular-estree-parser": "11.1.1",
@@ -93,7 +94,7 @@
     "remark-math": "3.0.1",
     "remark-parse": "8.0.3",
     "sdbm": "2.0.0",
-    "smol-toml": "1.3.1",
+    "smol-toml": "1.3.3",
     "strip-ansi": "7.1.0",
     "to-fast-properties": "4.0.0",
     "trim-newlines": "5.0.0",
@@ -111,7 +112,8 @@
     "@eslint/js": "9.24.0",
     "@stylistic/eslint-plugin-js": "4.2.0",
     "@types/estree": "1.0.7",
-    "@typescript-eslint/eslint-plugin": "8.29.0",
+    "@typescript-eslint/eslint-plugin": "8.30.1",
+    "@typescript-eslint/parser": "8.30.1",
     "browserslist": "4.24.4",
     "browserslist-to-esbuild": "2.1.1",
     "c8": "10.1.3",
@@ -158,7 +160,7 @@
   },
   "scripts": {
     "prepublishOnly": "echo \"Error: must publish from dist/\" && exit 1",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --runInBand",
+    "test": "jest --runInBand",
     "test:dev-package": "cross-env INSTALL_PACKAGE=1 yarn test",
     "test:dist": "cross-env NODE_ENV=production yarn test",
     "test:dist-standalone": "cross-env TEST_STANDALONE=1 yarn test:dist",
@@ -212,5 +214,5 @@
     "not op_mini all"
   ],
   "preferUnplugged": true,
-  "packageManager": "yarn@4.9.0"
+  "packageManager": "yarn@4.9.1"
 }
