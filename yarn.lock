@@ -3412,10 +3412,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"diff@npm:8.0.1":
-  version: 8.0.1
-  resolution: "diff@npm:8.0.1"
-  checksum: 10/1f56c913dc48ad85dcd83ac374d43b0acda6c4a25dc32660f65988fcd2c2f2d8f6cc9cddb58a268513e0bf1bff139b028c42cabec5dfeeb7e0af68830ce8787a
+"diff@npm:8.0.2":
+  version: 8.0.2
+  resolution: "diff@npm:8.0.2"
+  checksum: 10/82a2120d3418f97822e17a6044ccd4b99a91e26e145e8698353673d7146bd2d092bbebb79c112aae7badc7b9c526f9098cbe342f96174feb6beabdd2587b3c42
   languageName: node
   linkType: hard
 
@@ -4470,10 +4470,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flow-parser@npm:0.266.1":
-  version: 0.266.1
-  resolution: "flow-parser@npm:0.266.1"
-  checksum: 10/179d16b296f44e2a076fcef502fcf768b3e59749e715cdbfb192d6cfbe874e9ccd846fb2e171a13432f787185f4541cbbb8a61937e0124b59edb4c4896353a76
+"flow-parser@npm:0.272.0":
+  version: 0.272.0
+  resolution: "flow-parser@npm:0.272.0"
+  checksum: 10/0a9ebec70e91bd0a33fd44046dcbeebabb2dc9721e5fc5c785a35550febace1b48c5f1f52b2e7c1250558401c7ba6c0bbf39816b1a37a37b1f313e5c9b527f94
   languageName: node
   linkType: hard
 
@@ -4755,19 +4755,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hermes-estree@npm:0.27.0":
-  version: 0.27.0
-  resolution: "hermes-estree@npm:0.27.0"
-  checksum: 10/bbad6b3f800d38bebcdfba6b5548facb0b7d61d2bdddf3d581563836142a7bf658bdeb6e9c19a9ef0e8bcbeff65c440397ea76fd3c838f6f3df8562493166912
+"hermes-estree@npm:0.28.1":
+  version: 0.28.1
+  resolution: "hermes-estree@npm:0.28.1"
+  checksum: 10/3195a1aa7035d96b77839e6bfd6832b51830518aaf8dabfca11248b84d6fb6abd27e21c8caa84229954a76b4f8a1e346b65d421a4daecd3053bd2ea08fe6abc9
   languageName: node
   linkType: hard
 
-"hermes-parser@npm:0.27.0":
-  version: 0.27.0
-  resolution: "hermes-parser@npm:0.27.0"
+"hermes-parser@npm:0.28.1":
+  version: 0.28.1
+  resolution: "hermes-parser@npm:0.28.1"
   dependencies:
-    hermes-estree: "npm:0.27.0"
-  checksum: 10/58850d6cd5358a2a5c98f28e4b25b9bfd8b4b5fdf1e0c69a1b45fe597d01b5ae63ac2700e282528b0f521c659505496bc691d0ebe174cb10b328e6b206e5105f
+    hermes-estree: "npm:0.28.1"
+  checksum: 10/cb2aa4d386929825c3bd8184eeb4e3dcf34892c1f850624d09a80aee0674bc2eb135eccaeb7ac33675552130229ee6160025c4e4f351d6a61b503bd8bfdf63f5
   languageName: node
   linkType: hard
 
@@ -6553,9 +6553,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-run-all2@npm:8.0.1":
-  version: 8.0.1
-  resolution: "npm-run-all2@npm:8.0.1"
+"npm-run-all2@npm:8.0.3":
+  version: 8.0.3
+  resolution: "npm-run-all2@npm:8.0.3"
   dependencies:
     ansi-styles: "npm:^6.2.1"
     cross-spawn: "npm:^7.0.6"
@@ -6570,7 +6570,7 @@ __metadata:
     npm-run-all2: bin/npm-run-all/index.js
     run-p: bin/run-p/index.js
     run-s: bin/run-s/index.js
-  checksum: 10/afa8edf143bd2767a8a884379f52364b6cf465b0c6219f035a730b279397a459d7215d110204ff6089ca160492d8120763cd84880e07c0f4d0cc8e6ef3fb218a
+  checksum: 10/0d381ae684c41f78f607e2a55826e480bda1b8e489bbebf4aa3f89c393e12f97a4f5cbc94a9653702497b6ae1f45b8ec01dd5f70fa6b1881c0696bbb451f0fe5
   languageName: node
   linkType: hard
 
@@ -7027,7 +7027,7 @@ __metadata:
     css-units-list: "npm:2.1.0"
     dashify: "npm:2.0.0"
     deno-path-from-file-url: "npm:0.0.2"
-    diff: "npm:8.0.1"
+    diff: "npm:8.0.2"
     editorconfig: "npm:0.15.3"
     emoji-regex: "npm:10.4.0"
     enquirer: "npm:2.4.1"
@@ -7050,12 +7050,12 @@ __metadata:
     fast-json-stable-stringify: "npm:2.1.0"
     file-entry-cache: "npm:10.0.8"
     find-cache-directory: "npm:6.0.0"
-    flow-parser: "npm:0.266.1"
+    flow-parser: "npm:0.272.0"
     get-east-asian-width: "npm:1.3.0"
     get-stdin: "npm:9.0.0"
     globals: "npm:16.1.0"
     graphql: "npm:16.11.0"
-    hermes-parser: "npm:0.27.0"
+    hermes-parser: "npm:0.28.1"
     html-element-attributes: "npm:3.4.0"
     html-ua-styles: "npm:0.0.8"
     ignore: "npm:7.0.4"
@@ -7079,7 +7079,7 @@ __metadata:
     n-readlines: "npm:1.0.1"
     nano-spawn: "npm:1.0.1"
     node-style-text: "npm:0.0.8"
-    npm-run-all2: "npm:8.0.1"
+    npm-run-all2: "npm:8.0.3"
     outdent: "npm:0.8.0"
     parse-json: "npm:8.3.0"
     picocolors: "npm:1.1.1"
