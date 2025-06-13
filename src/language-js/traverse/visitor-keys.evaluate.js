@@ -1,23 +1,12 @@
 import { VISITOR_KEYS as babelVisitorKeys } from "@babel/types";
 import { visitorKeys as tsVisitorKeys } from "@typescript-eslint/visitor-keys";
+import { visitorKeys as angularVisitorKeys } from "angular-estree-parser";
 import flowVisitorKeys from "hermes-parser/dist/generated/ESTreeVisitorKeys.js";
 import unionVisitorKeys from "./union-visitor-keys.js";
 
-const angularVisitorKeys = {
-  NGRoot: ["node"],
-  NGPipeExpression: ["left", "right", "arguments"],
-  NGChainedExpression: ["expressions"],
-  NGEmptyExpression: [],
-  NGMicrosyntax: ["body"],
-  NGMicrosyntaxKey: [],
-  NGMicrosyntaxExpression: ["expression", "alias"],
-  NGMicrosyntaxKeyedExpression: ["key", "expression"],
-  NGMicrosyntaxLet: ["key", "value"],
-  NGMicrosyntaxAs: ["key", "alias"],
-};
-
 const additionalVisitorKeys = {
   // Prettier
+  NGRoot: ["node"],
   JsExpressionRoot: ["node"],
   JsonRoot: ["node"],
 
@@ -26,6 +15,7 @@ const additionalVisitorKeys = {
   TSJSDocUnknownType: [],
   TSJSDocNullableType: ["typeAnnotation"],
   TSJSDocNonNullableType: ["typeAnnotation"],
+
   // `@typescript-eslint/typescript-estree` v6 renamed `typeParameters` to `typeArguments`
   // Remove those when babel update AST
   JSXOpeningElement: ["typeParameters"],
@@ -33,17 +23,12 @@ const additionalVisitorKeys = {
   TSInterfaceHeritage: ["typeParameters"],
 
   // Flow, missed in `flowVisitorKeys`
-  ClassPrivateProperty: ["variance"],
-  ClassProperty: ["variance"],
   NeverTypeAnnotation: [],
+  SatisfiesExpression: ["expression", "typeAnnotation"],
   TupleTypeAnnotation: ["elementTypes"],
   TypePredicate: ["asserts"],
   UndefinedTypeAnnotation: [],
   UnknownTypeAnnotation: [],
-  AsExpression: ["expression", "typeAnnotation"],
-  AsConstExpression: ["expression"],
-  SatisfiesExpression: ["expression", "typeAnnotation"],
-  TypeofTypeAnnotation: ["argument", "typeArguments"],
 };
 
 const excludeKeys = {
@@ -66,44 +51,20 @@ const excludeKeys = {
   ExportNamedDeclaration: ["assertions"],
   ImportDeclaration: ["assertions"],
   ImportExpression: ["attributes"],
-
-  // `key` and `constraint` added in `@typescript-eslint/typescript-estree` v8
-  // https://github.com/typescript-eslint/typescript-eslint/pull/7065
-  // TODO: Use the new AST properties instead
-  TSMappedType: ["key", "constraint"],
-  // `body` added in `@typescript-eslint/typescript-estree` v8
-  // https://github.com/typescript-eslint/typescript-eslint/pull/8920
-  // TODO: Use the new AST properties instead
-  TSEnumDeclaration: ["body"],
+  TSMappedType: ["typeParameter"],
+  TSEnumDeclaration: ["members"],
 };
 
-const visitorKeys = Object.fromEntries(
-  Object.entries(
-    unionVisitorKeys([
-      babelVisitorKeys,
-      tsVisitorKeys,
-      flowVisitorKeys,
-      angularVisitorKeys,
-      additionalVisitorKeys,
-    ]),
-  ).map(([type, keys]) => [
-    type,
-    excludeKeys[type]
-      ? keys.filter((key) => !excludeKeys[type].includes(key))
-      : keys,
-  ]),
-);
+const excludeNodeTypes = new Set([
+  // Babel will remove in v8
+  // https://github.com/babel/babel/pull/17242
+  "TupleExpression",
+  "RecordExpression",
+  "DecimalLiteral",
+  // Babel, Won't exist since we use `createImportExpressions` when parsing with babel
+  "Import",
 
-// Babel will remove these in v8 https://github.com/babel/babel/pull/17242
-delete visitorKeys.TupleExpression;
-delete visitorKeys.RecordExpression;
-// Babel will remove this in v8
-delete visitorKeys.DecimalLiteral;
-// Won't exist since we use `createImportExpressions` when parsing with babel
-delete visitorKeys.Import;
-
-// Flow, not supported
-for (const type of [
+  // Flow, not supported
   "MatchArrayPattern",
   "MatchAsPattern",
   "MatchBindingPattern",
@@ -120,8 +81,25 @@ for (const type of [
   "MatchStatementCase",
   "MatchUnaryPattern",
   "MatchWildcardPattern",
-]) {
-  delete visitorKeys[type];
-}
+]);
+
+const visitorKeys = Object.fromEntries(
+  Object.entries(
+    unionVisitorKeys([
+      babelVisitorKeys,
+      tsVisitorKeys,
+      flowVisitorKeys,
+      angularVisitorKeys,
+      additionalVisitorKeys,
+    ]),
+  )
+    .filter(([type]) => !excludeNodeTypes.has(type))
+    .map(([type, keys]) => [
+      type,
+      excludeKeys[type]
+        ? keys.filter((key) => !excludeKeys[type].includes(key))
+        : keys,
+    ]),
+);
 
 export default visitorKeys;
